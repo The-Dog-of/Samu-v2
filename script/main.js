@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             const icon = hamburger.querySelector('i');
+            
             if (navLinks.classList.contains('active')) {
                 icon.classList.replace('ph-list', 'ph-x');
             } else {
@@ -99,24 +100,47 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLiveCount();
 
     const discordForm = document.getElementById('discordForm');
+    
     if (discordForm) {
         discordForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+            
             const btn = document.getElementById('submitBtn');
             const status = document.getElementById('formStatus');
-            
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="ph-bold ph-spinner-gap icon-spin"></i> Enviando...';
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            const originalBtnText = btn.innerHTML;
+            btn.innerHTML = 'Enviando...';
             btn.disabled = true;
 
-            setTimeout(() => {
-                status.textContent = "Mensagem enviada com sucesso! 🚀";
-                status.className = "status-msg success";
-                btn.innerHTML = originalText;
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, message })
+                });
+
+                if (response.ok) {
+                    status.textContent = "Mensagem enviada com sucesso! 🚀";
+                    status.className = "status-msg success";
+                    discordForm.reset();
+                } else {
+                    throw new Error('Erro no servidor');
+                }
+            } catch (error) {
+                console.error(error);
+                status.textContent = "Erro ao enviar. Tente novamente.";
+                status.className = "status-msg error";
+            } finally {
+                btn.innerHTML = originalBtnText;
                 btn.disabled = false;
-                discordForm.reset();
-                setTimeout(() => status.textContent = "", 5000);
-            }, 1500);
+ 
+                setTimeout(() => { 
+                    status.textContent = ""; 
+                    status.className = "status-msg";
+                }, 5000);
+            }
         });
     }
 });
