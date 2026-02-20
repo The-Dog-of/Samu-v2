@@ -114,6 +114,7 @@ body.hovering .cursor-outline {
 .btn-secondary { background: var(--white); box-shadow: 3px 3px 0px #BDC3C7; }
 .btn-secondary:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--text-main); }
 .full-width { width: 100%; }
+.btn-sm { padding: 8px 16px; font-size: 0.85rem; }
 
 .hero-image {
     position: relative; width: 45%; height: 450px;
@@ -203,12 +204,34 @@ body.hovering .cursor-outline {
 .icon-btn svg { display: block; fill: currentColor; }
 .icon-btn:hover { background: var(--accent); color: white; transform: scale(1.1); border-color: var(--accent); }
 
-.top-hits, .games-grid-section { padding: 80px 5%; }
+.top-hits, .games-grid-section, .store-section { padding: 80px 5%; }
 .section-header, .games-header { text-align: center; margin-bottom: 50px; }
-.hits-container, .grid-container {
+.hits-container, .grid-container, .store-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px; align-items: start;
 }
+
+.store-section { background-color: var(--accent-light); border-top: var(--border); }
+.store-card {
+    background: var(--card-bg); border: var(--border); border-radius: 16px;
+    overflow: hidden; display: flex; flex-direction: column;
+    box-shadow: 6px 6px 0px var(--text-main); transform-style: preserve-3d;
+}
+.store-thumb { position: relative; width: 100%; aspect-ratio: 4/3; border-bottom: var(--border); background: var(--white); }
+.store-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.asset-category {
+    position: absolute; top: 12px; left: 12px; background: var(--accent); color: white;
+    padding: 4px 10px; border-radius: 8px; font-weight: 800; font-size: 0.75rem; border: 2px solid var(--text-main);
+}
+.store-info { padding: 20px; display: flex; flex-direction: column; height: 100%; text-align: left; }
+.store-info h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.store-info p { font-size: 0.9rem; color: #5B7CA6; margin-bottom: 20px; flex-grow: 1; }
+.store-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 2px dashed #D1D9E6; padding-top: 15px;
+}
+.price { font-size: 1.3rem; font-weight: 800; color: #00AA00; display: flex; align-items: center; gap: 4px; }
+
 .game-card {
     background: var(--card-bg); border: var(--border); border-radius: 16px;
     overflow: hidden; display: flex; flex-direction: column;
