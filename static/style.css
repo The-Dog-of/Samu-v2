@@ -146,11 +146,11 @@ body.hovering .cursor-outline {
     box-shadow: 4px 4px 0px var(--text-main); z-index: 5;
 }
 
-.card-code { top: 25%; left: -10%; animation: float 4s ease-in-out infinite; }
-.card-design { bottom: 20%; right: -12%; animation: float 5s ease-in-out infinite reverse; }
-.card-model { top: 15%; right: -5%; animation: float 6s ease-in-out infinite 1s; }
-.card-anim { bottom: 10%; left: -5%; animation: float 4.5s ease-in-out infinite reverse 0.5s; }
-.card-vfx { top: -8%; left: 35%; animation: float 5.5s ease-in-out infinite 2s; }
+.card-code { top: 25%; left: -2%; animation: float 4s ease-in-out infinite; }
+.card-design { bottom: 20%; right: -5%; animation: float 5s ease-in-out infinite reverse; }
+.card-model { top: 15%; right: -1%; animation: float 6s ease-in-out infinite 1s; }
+.card-anim { bottom: 10%; left: -1%; animation: float 4.5s ease-in-out infinite reverse 0.5s; }
+.card-vfx { top: -15%; left: 35%; animation: float 5.5s ease-in-out infinite 2s; }
 
 .marquee-container-box {
     max-width: 900px;
